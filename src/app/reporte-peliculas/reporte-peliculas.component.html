@@ -1,0 +1,32 @@
+<div>
+  <label for="genero">Género:</label>
+  <select id="genero" [(ngModel)]="filtroGenero" (change)="filtrarPeliculas()">
+    <option value="">Todos</option>
+    <option value="Acción">Acción</option>
+    <option value="Comedia">Comedia</option>
+    <option value="Drama">Drama</option>
+  </select>
+</div>
+
+<div>
+  <label for="lanzamiento">Año de Lanzamiento:</label>
+  <input id="lanzamiento" type="number" [(ngModel)]="filtroLanzamiento" (input)="filtrarPeliculas()" />
+</div>
+
+<table>
+  <tr>
+    <th>Título</th>
+    <th>Género</th>
+    <th>Año de lanzamiento</th>
+  </tr>
+  <tr *ngFor="let pelicula of peliculasFiltradas">
+    <td>{{ pelicula.titulo }}</td>
+    <td>{{ pelicula.genero }}</td>
+    <td>{{ pelicula.lanzamiento }}</td>
+  </tr>
+</table>
+
+<button (click)="generarPDF()">Generar PDF</button>
+<button (click)="exportarExcel()">Exportar a Excel</button>
+<button (click)="exportarCSV()">Exportar a CSV</button>
+
